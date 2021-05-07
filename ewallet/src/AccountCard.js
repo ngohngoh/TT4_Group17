@@ -3,10 +3,11 @@ import React from 'react';
 const AccountCard = props => {
     const accounts = props.accounts.map(({accountName, accountNumber, availableBal}) => {
         return (
-            <div key={accountNumber} className="ui cards">
+            <div key={accountNumber} className="ui cards center">
                 <div className="card">
                     <div className="content">
                         <div className="header">{accountName}</div>
+                        <div className="description">A/C No. <b>{accountNumber}</b></div>
                         <div className="description"> Balance amount: {availableBal}</div>
 
                     </div>
@@ -16,20 +17,13 @@ const AccountCard = props => {
         )
     });
 
-    return <div>{accounts}</div>;
+    return <div>
+                <div>
+                    <h2>Number of accounts:</h2>
+                    {accounts.length}
+                </div>
+                {accounts}
+            </div>;
 }
-
-
-// class AccountCard extends React.Component {
-//     render() {
-
-//     }
-// }
-
-// class AccountCard extends React.Component {
-//     render() {
-//         return <div>Accounts I can see</div>;
-//     }
-// }
 
 export default AccountCard;

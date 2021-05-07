@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container } from 'reactstrap';
 import { Form, Alert, FormGroup, Input, Label, Row, Col } from "reactstrap";
 import {Button} from 'react-bootstrap';
+import { useHistory } from "react-router-dom";
 
 
 class Login extends Component {
@@ -38,6 +39,20 @@ class Login extends Component {
         body: JSON.stringify(data)
     };
 
+    function HomeButton() {
+      let history = useHistory();
+    
+      function handleClick() {
+        history.push("/AccountView");
+      }
+    
+      return (
+        <button type="button" onClick={handleClick}>
+          Go home
+        </button>
+      );
+    }
+
     fetch(URL, requestOptions)
         .then(response => response.json())
         .then(data => {
@@ -47,6 +62,7 @@ class Login extends Component {
                 error: ''
             })
             console.log(data);
+            this.props.onSuccessLogin() 
             localStorage.setItem("custId", data.custID);
         })
         .catch(err => {
@@ -67,7 +83,7 @@ class Login extends Component {
             <div style={{marginBottom: "10px"}}>
               
             </div>
-            <Form  onSubmit={this.doLogin}>
+            <Form onSubmit={this.doLogin}>
               <FormGroup>
               <h4>Login</h4>
                 <Label for="username"><strong>Username</strong></Label>
