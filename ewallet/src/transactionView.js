@@ -10,12 +10,12 @@ class TransactionView extends Component {
     super(props);
 
     this.state = {
-        custID:17,
-        accountKey:"p3dia58c-bmo7-xwsl-9xc5-ky5wjpi26by",
+        // custID:17,
+        // accountKey:"p3dia58c-bmo7-xwsl-9xc5-ky5wjpi26by",
         payeeID:Int16Array,
         amount: Int32Array,
         expenseCat: "",
-        eGift: false,
+        eGift: Boolean,
         message: "",
         error:""
     };
@@ -31,12 +31,12 @@ class TransactionView extends Component {
     event.preventDefault();
     const URL = "https://ipllrj2mq8.execute-api.ap-southeast-1.amazonaws.com/techtrek/transactions/add";
     const data = {
-        custID:this.state.custID,
-        accountKey:this.state.accountKey,
-        payeeID:this.state.payeeID,
-        amount: this.state.amount,
+        custID: 17,
+        accountKey:"p3dia58c-bmo7-xwsl-9xc5-ky5wjpi26by",
+        payeeID: parseInt(this.state.payeeID),
+        amount: parseInt(this.state.amount),
         expenseCat: this.state.expenseCat,
-        eGift: this.state.eGift,
+        eGift: false,
         message: this.state.message,
     };
     const requestOptions = {
@@ -52,13 +52,13 @@ class TransactionView extends Component {
         .then(response => response.json())
         .then(data => {
             this.setState({
-                custID:17,
-                accountKey:"p3dia58c-bmo7-xwsl-9xc5-ky5wjpi26by",
-                payeeID:1,
-                amount: 22,
-                expenseCat: "Food",
-                eGift: false,
-                message: "Breakfast"
+                // custID:17,
+                // accountKey:"p3dia58c-bmo7-xwsl-9xc5-ky5wjpi26by",
+                payeeID:Int16Array,
+                amount: Int16Array,
+                expenseCat: "",
+                eGift: Boolean,
+                message: ""
             })
             console.log(data);
             //localStorage.setItem("custId", data.custID);
@@ -115,8 +115,21 @@ class TransactionView extends Component {
                 <Input type="text" 
                   name="expenseCat" id="expenseCat"
                   value={this.state.expenseCat}
-                  placeholder="Enter expenseCat"
+                  placeholder="Enter Expense Catogary"
                   autoComplete="expenseCat"
+                  onChange={this.changeHandler}
+                />
+              </FormGroup>
+              
+              <br />
+
+              <FormGroup>
+                <Label for="eGift"><strong>eGift</strong></Label>
+                <Input type="checkbox" 
+                  name="eGift" id="eGift"
+                  value={this.state.eGift}
+                  //placeholder="Enter Expense Catogary"
+                  autoComplete="eGift"
                   onChange={this.changeHandler}
                 />
               </FormGroup>
