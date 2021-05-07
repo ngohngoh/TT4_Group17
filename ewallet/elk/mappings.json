@@ -1,0 +1,39 @@
+{
+    "mappings": {
+      "properties": {
+        "amount": {
+          "type": "integer"
+        },
+        "custID": {
+          "type": "long"
+        },
+        "datetime": {
+          "type": "date"
+        },
+        "eGift": {
+          "type": "boolean"
+        },
+        "expenseCat": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "message": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "payeeID": {
+          "type": "long"
+        }
+      }
+    }
+  }

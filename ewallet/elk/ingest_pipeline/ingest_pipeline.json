@@ -1,0 +1,18 @@
+[
+    {
+      "date": {
+        "field": "datetime",
+        "target_field": "@timestamp",
+        "formats": [
+          "UNIX"
+        ],
+        "timezone": "Asia/Singapore"
+      }
+    },
+    {
+      "convert": {
+        "field": "amount",
+        "type": "double"
+      }
+    }
+  ]
