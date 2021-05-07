@@ -1,6 +1,6 @@
 import React from 'react';
 import AccountView from './AccountView';
-import transactionView from './transactionView';
+import TransactionView from './TransactionView';
 import Login from './Login';
 
 
@@ -11,7 +11,7 @@ class App extends React.Component {
       
       <div>
         <Login /> 
-        <transactionView />
+        <TransactionView />
       
       </div>
     );
