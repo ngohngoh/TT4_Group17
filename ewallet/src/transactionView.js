@@ -84,7 +84,7 @@ class TransactionView extends Component {
             <Form  onSubmit={this.AddTransaction}>
               <FormGroup>
               <h4>Login</h4>
-                <Label for="payeeID"><strong>Payee ID</strong></Label>
+                <Label for="payeeID"><strong>Payee ID  </strong></Label>
                 <Input autoFocus 
                   type="text"
                   name="payeeID" id="payeeID"
@@ -98,7 +98,7 @@ class TransactionView extends Component {
               <br />
 
               <FormGroup>
-                <Label for="amount"><strong>Amount</strong></Label>
+                <Label for="amount"><strong>Amount  </strong></Label>
                 <Input type="text" 
                   name="amount" id="amount"
                   value={this.state.amount}
@@ -111,7 +111,7 @@ class TransactionView extends Component {
               <br />
 
               <FormGroup>
-                <Label for="expenseCat"><strong>Expense Catogary</strong></Label>
+                <Label for="expenseCat"><strong>Expense Catogary  </strong></Label>
                 <Input type="text" 
                   name="expenseCat" id="expenseCat"
                   value={this.state.expenseCat}
@@ -124,7 +124,7 @@ class TransactionView extends Component {
               <br />
 
               <FormGroup>
-                <Label for="eGift"><strong>eGift</strong></Label>
+                <Label for="eGift"><strong>eGift  </strong></Label>
                 <Input type="checkbox" 
                   name="eGift" id="eGift"
                   value={this.state.eGift}
@@ -137,7 +137,7 @@ class TransactionView extends Component {
               <br />
 
               <FormGroup>
-                <Label for="message"><strong>Message</strong></Label>
+                <Label for="message"><strong>Message  </strong></Label>
                 <Input type="text" 
                   name="message" id="message"
                   value={this.state.message}
