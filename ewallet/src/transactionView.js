@@ -1,42 +1,33 @@
-import React from 'react';
-import transaction from './api/transaction';
-import TransactionForm from './TransactionForm';
+import React, { Component } from 'react';
+import { Container } from 'reactstrap';
+import { Form, Alert, FormGroup, Input, Label, Row, Col } from "reactstrap";
+import {Button} from 'react-bootstrap';
 
 
-class TransactionView extends React.Component {
+class TransactionView extends Component {
 
-    state = { transactions : [] };
+  constructor(props) {
+    super(props);
 
-    handleClick = () => {
-        transaction.post(
-            '/', 
-            {
-                "custID":17,
-                "accountKey":"p3dia58c-bmo7-xwsl-9xc5-ky5wjpi26by",
-                "payeeID":1,
-                "amount": 22,
-                "expenseCat": "Food",
-                "eGift": false,
-                "message": "Breakfast"
-            }
-        )
-        .then(response => {
-            
-            //this.setState({ transactions: response.data })
-            console.log(response.data);
-
-        })
+    this.state = {
+        custID:17,
+        accountKey:"p3dia58c-bmo7-xwsl-9xc5-ky5wjpi26by",
+        payeeID:1,
+        amount: 22,
+        expenseCat: "Food",
+        eGift: false,
+        message: "Breakfast",
+        error:""
     };
   }
 
-    render() {
-        return (
-            <div>
-                <button onClick={this.handleClick}>Add Transaction</button>
-                <br />
-                //<TransactionForm transactions={this.state.transactions} />
+  changeHandler = (event) => {
+    let nam = event.target.name;
+    let val = event.target.value;
+    this.setState({[nam]: val});
+  }
 
-  doLogin = async (event) => {
+  AddTransaction = async (event) => {
     event.preventDefault();
     const URL = "https://ipllrj2mq8.execute-api.ap-southeast-1.amazonaws.com/techtrek/transactions/add";
     const data = {
@@ -57,80 +48,110 @@ class TransactionView extends React.Component {
         body: JSON.stringify(data)
     };
 
-    // fetch(URL, requestOptions)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         this.setState({
-    //             username: '',
-    //             password: '',
-    //             error: ''
-    //         })
-    //         console.log(data);
-    //         localStorage.setItem("custId", data.custID);
-    //     })
-    //     .catch(err => {
-    //         console.log(err);
-    //         this.setState({
-    //             error: 'Invalid username and password'
-    //         }); 
-    //     });
-    // }
-
-    render() {
-        return ( 
-          <div>    
-            <Container fluid>
-            
-              <Row style={{marginTop:"20px"}}>
-              <Col sm="12" md={{ size: 3, offset: 4 }}>
-                <div style={{marginBottom: "10px"}}>
-                  
-                </div>
-                <Form  onSubmit={this.doLogin}>
-                  <FormGroup>
-                  <h4>Login</h4>
-                    <Label for="username"><strong>Username</strong></Label>
-                    <Input autoFocus 
-                      type="text"
-                      name="username" id="username"
-                      value={this.state.username}
-                      placeholder="Enter Username"
-                      autoComplete="username"
-                      onChange={this.changeHandler}
-                    />
-                  </FormGroup>
-    
-                  <br />
-    
-                  <FormGroup>
-                    <Label for="password"><strong>Password</strong></Label>
-                    <Input type="password" 
-                      name="password" id="password"
-                      value={this.state.password}
-                      placeholder="Enter Password"
-                      autoComplete="password"
-                      onChange={this.changeHandler}
-                    />
-                  </FormGroup>
-                  
-                  <br />
-    
-                  <Button type="submit" variant="primary" size="lg" block>
-                    Sign In
-                  </Button>
-                  {
-                    this.state.error && (
-                      <Alert color="danger">
-                        {this.state.error}
-                      </Alert>
-                    )
-                  }
-                </Form>
-                </Col>
-              </Row>
-            </Container>
-          </div>);
-      }
+    fetch(URL, requestOptions)
+        .then(response => response.json())
+        .then(data => {
+            this.setState({
+                custID:17,
+                accountKey:"p3dia58c-bmo7-xwsl-9xc5-ky5wjpi26by",
+                payeeID:1,
+                amount: 22,
+                expenseCat: "Food",
+                eGift: false,
+                message: "Breakfast"
+            })
+            console.log(data);
+            //localStorage.setItem("custId", data.custID);
+        })
+        .catch(err => {
+            console.log(err);
+            this.setState({
+                error: 'User or Amount'
+            }); 
+        });
     }
+
+  render() {
+    return ( 
+      <div>    
+        <Container fluid>
+        
+          <Row style={{marginTop:"20px"}}>
+          <Col sm="12" md={{ size: 3, offset: 4 }}>
+            <div style={{marginBottom: "10px"}}>
+              
+            </div>
+            <Form  onSubmit={this.AddTransaction}>
+              <FormGroup>
+              <h4>Login</h4>
+                <Label for="payeeID"><strong>Payee ID</strong></Label>
+                <Input autoFocus 
+                  type="text"
+                  name="payeeID" id="payeeID"
+                  value={this.state.payeeID}
+                  placeholder="Enter payeeID"
+                  autoComplete="payeeID"
+                  onChange={this.changeHandler}
+                />
+              </FormGroup>
+
+              <br />
+
+              <FormGroup>
+                <Label for="amount"><strong>Amount</strong></Label>
+                <Input type="text" 
+                  name="amount" id="amount"
+                  value={this.state.amount}
+                  placeholder="Enter amount"
+                  autoComplete="amount"
+                  onChange={this.changeHandler}
+                />
+              </FormGroup>
+              
+              <br />
+
+              <FormGroup>
+                <Label for="expenseCat"><strong>Expense Catogary</strong></Label>
+                <Input type="text" 
+                  name="expenseCat" id="expenseCat"
+                  value={this.state.expenseCat}
+                  placeholder="Enter expenseCat"
+                  autoComplete="expenseCat"
+                  onChange={this.changeHandler}
+                />
+              </FormGroup>
+              
+              <br />
+
+              <FormGroup>
+                <Label for="message"><strong>Message</strong></Label>
+                <Input type="text" 
+                  name="amoumessagent" id="message"
+                  value={this.state.message}
+                  placeholder="Enter message"
+                  autoComplete="message"
+                  onChange={this.changeHandler}
+                />
+              </FormGroup>
+              
+              <br />
+
+              <Button type="submit" variant="primary" size="lg" block>
+                Sign In
+              </Button>
+              {
+                this.state.error && (
+                  <Alert color="danger">
+                    {this.state.error}
+                  </Alert>
+                )
+              }
+            </Form>
+            </Col>
+          </Row>
+        </Container>
+      </div>);
+  }
 }
-    export default Login;
+
+export default TransactionView;
