@@ -83,7 +83,7 @@ class TransactionView extends Component {
             </div>
             <Form  onSubmit={this.AddTransaction}>
               <FormGroup>
-              <h4>Login</h4>
+              <h1>Transaction</h1>
                 <Label for="payeeID"><strong>Payee ID  </strong></Label>
                 <Input autoFocus 
                   type="text"

@@ -1,6 +1,8 @@
 import React from 'react';
 import userAccount from './api/userAccount';
 import AccountCard from './AccountCard';
+import TransactionView from './transactionView';
+import TransactionHistory from './transHist';
 
 class AccountView extends React.Component {
 
@@ -27,6 +29,10 @@ class AccountView extends React.Component {
                 <button onClick={this.handleClick}>View your Account</button>
                 <br />
                 <AccountCard accounts={this.state.accounts} />
+
+                <TransactionHistory />
+
+                <TransactionView />
 
             </div>
         )
