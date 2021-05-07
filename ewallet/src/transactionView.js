@@ -12,11 +12,11 @@ class TransactionView extends Component {
     this.state = {
         custID:17,
         accountKey:"p3dia58c-bmo7-xwsl-9xc5-ky5wjpi26by",
-        payeeID:1,
-        amount: 22,
-        expenseCat: "Food",
+        payeeID:Int16Array,
+        amount: Int32Array,
+        expenseCat: "",
         eGift: false,
-        message: "Breakfast",
+        message: "",
         error:""
     };
   }
@@ -126,7 +126,7 @@ class TransactionView extends Component {
               <FormGroup>
                 <Label for="message"><strong>Message</strong></Label>
                 <Input type="text" 
-                  name="amoumessagent" id="message"
+                  name="message" id="message"
                   value={this.state.message}
                   placeholder="Enter message"
                   autoComplete="message"
@@ -137,7 +137,7 @@ class TransactionView extends Component {
               <br />
 
               <Button type="submit" variant="primary" size="lg" block>
-                Sign In
+                Confirm Transaction
               </Button>
               {
                 this.state.error && (
