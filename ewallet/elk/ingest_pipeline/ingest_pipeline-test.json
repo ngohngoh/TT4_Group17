@@ -1,0 +1,37 @@
+POST _ingest/pipeline/_simulate
+{
+  "pipeline": {
+    "description": "...",
+    "processors": [
+      {
+        "date": {
+          "field": "datetime",
+          "target_field": "@timestamp",
+          "formats": [
+            "UNIX"
+          ],
+          "timezone": "Asia/Singapore"
+        }
+      },
+      {
+        "convert": {
+          "field": "amount",
+          "type": "double"
+        }
+      }
+    ]
+  },
+  "docs": [
+    {
+      "_source": {
+        "eGift": false,
+        "datetime": 1618278455,
+        "custID": 22,
+        "amount": "426.43",
+        "message": "DBS",
+        "payeeID": 17,
+        "expenseCat": "Shopping"
+      }
+    }
+  ]
+}
