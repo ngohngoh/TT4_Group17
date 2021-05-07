@@ -1,13 +1,13 @@
 import React from 'react';
 
-const transactionForm = props => {
+const TransactionForm = props => {
     const transactions = props.transactions.map(({statusCode,message}) => {
         return (
-            <div key={statusCode} className="ui cards">
+            <div key="message" className="ui cards">
                 <div className="card">
                     <div className="content">
+                        <div className="header">{statusCode}</div>
                         <div className="header">{message}</div>
-                        
 
                     </div>
 
@@ -20,4 +20,5 @@ const transactionForm = props => {
 }
 
 
-export default transactionForm;
+
+export default TransactionForm;
